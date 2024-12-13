@@ -23,6 +23,10 @@
 		--color-text: #2D3436;
 	}
 
+	html {
+		scroll-behavior: smooth;
+	}
+
 	html,
 	body {
 		margin: 0;
@@ -31,10 +35,23 @@
 		font-family: 'Inter', sans-serif;
 		background: var(--color-background);
 		color: var(--color-text);
+		cursor: none;
+	}
+
+	@media (max-width: 768px) {
+		body {
+			cursor: auto;
+		}
 	}
 
 	h1, h2, h3 {
 		color: var(--color-primary);
 		line-height: 1.2;
+		font-weight: 700;
+	}
+
+	::selection {
+		background: var(--color-accent);
+		color: white;
 	}
 </style>
