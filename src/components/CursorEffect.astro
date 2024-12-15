@@ -1,0 +1,64 @@
+<div id="cursor">
+  <div class="cursor-dot"></div>
+</div>
+
+<style>
+  #cursor {
+    pointer-events: none;
+    position: fixed;
+    z-index: 9999;
+  }
+
+  .cursor-dot {
+    width: 20px;
+    height: 20px;
+    background: var(--color-primary);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    mix-blend-mode: difference;
+    z-index: 9999;
+    opacity: 0.5;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease;
+  }
+
+  @media (max-width: 768px) {
+    #cursor {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  const cursor = {
+    dot: document.querySelector('.cursor-dot')
+  };
+  
+  document.addEventListener('mousemove', (e) => {
+    if (cursor.dot) {
+      cursor.dot.style.left = e.clientX + 'px';
+      cursor.dot.style.top = e.clientY + 'px';
+    }
+  });
+
+  // Interactive states
+  const links = document.querySelectorAll('a, button');
+  links.forEach(link => {
+    link.addEventListener('mouseenter', () => {
+      if (cursor.dot) cursor.dot.style.transform = 'translate(-50%, -50%) scale(1.5)';
+    });
+
+    link.addEventListener('mouseleave', () => {
+      if (cursor.dot) cursor.dot.style.transform = 'translate(-50%, -50%) scale(1)';
+    });
+  });
+
+  document.addEventListener('mousedown', () => {
+    if (cursor.dot) cursor.dot.style.transform = 'translate(-50%, -50%) scale(0.8)';
+  });
+
+  document.addEventListener('mouseup', () => {
+    if (cursor.dot) cursor.dot.style.transform = 'translate(-50%, -50%) scale(1)';
+  });
+</script> 

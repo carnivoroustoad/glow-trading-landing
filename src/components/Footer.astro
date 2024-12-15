@@ -1,0 +1,51 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer>
+	<div class="footer-content">
+		<div class="footer-links">
+			<a href="/terms">Terms of Service</a>
+			<a href="/privacy">Privacy Policy</a>
+			<a href="/about">About Us</a>
+		</div>
+		<div class="copyright">
+			© {currentYear} Glow Trading. All rights reserved.
+		</div>
+	</div>
+</footer>
+
+<style>
+	footer {
+		margin-top: 4rem;
+		padding: 2rem;
+		background: rgba(255, 255, 255, 0.1);
+		backdrop-filter: blur(10px);
+	}
+
+	.footer-content {
+		max-width: 1200px;
+		margin: 0 auto;
+		text-align: center;
+	}
+
+	.footer-links {
+		margin-bottom: 1rem;
+	}
+
+	.footer-links a {
+		color: #666;
+		text-decoration: none;
+		margin: 0 1rem;
+		transition: color 0.3s ease;
+	}
+
+	.footer-links a:hover {
+		color: var(--color-accent);
+	}
+
+	.copyright {
+		color: #888;
+		font-size: 0.9rem;
+	}
+</style> 

@@ -1,57 +1,54 @@
+---
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+import CursorEffect from '../components/CursorEffect.astro';
+
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
+		<meta name="description" content="Glow - Quantitative Beauty Solutions" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Glow Trading | Men's Beauty Software Solutions</title>
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+		<title>{title}</title>
 	</head>
 	<body>
+		<CursorEffect />
+		<Navigation />
 		<slot />
+		<Footer />
 	</body>
 </html>
 
 <style is:global>
 	:root {
-		--color-primary: #2D3436;
-		--color-accent: #00B894;
-		--color-background: #FFFFFF;
-		--color-text: #2D3436;
+		--color-primary: #00b894;
+		--color-accent: #0984e3;
 	}
 
 	html {
-		scroll-behavior: smooth;
-	}
-
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		min-height: 100vh;
-		font-family: 'Inter', sans-serif;
-		background: var(--color-background);
-		color: var(--color-text);
+		font-family: system-ui, sans-serif;
+		background: #f5f6fa;
 		cursor: none;
 	}
 
-	@media (max-width: 768px) {
-		body {
-			cursor: auto;
-		}
+	body {
+		margin: 0;
+		min-height: 100vh;
+		display: flex;
+		flex-direction: column;
 	}
 
-	h1, h2, h3 {
-		color: var(--color-primary);
-		line-height: 1.2;
-		font-weight: 700;
-	}
-
-	::selection {
-		background: var(--color-accent);
-		color: white;
+	code {
+		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
+			Bitstream Vera Sans Mono, Courier New, monospace;
 	}
 </style>

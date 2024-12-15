@@ -1,0 +1,48 @@
+---
+const currentPath = Astro.url.pathname;
+---
+
+<nav>
+	<div class="logo">
+		<a href="/">Glow Trading</a>
+	</div>
+	<div class="nav-links">
+		<a href="/" class={currentPath === "/" ? "active" : ""}>Home</a>
+		<a href="/about" class={currentPath === "/about" ? "active" : ""}>About</a>
+	</div>
+</nav>
+
+<style>
+	nav {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 1rem 2rem;
+		background: rgba(255, 255, 255, 0.1);
+		backdrop-filter: blur(10px);
+		margin-bottom: 2rem;
+	}
+
+	.logo a {
+		font-size: 1.5rem;
+		font-weight: bold;
+		color: var(--color-primary);
+		text-decoration: none;
+	}
+
+	.nav-links a {
+		color: #333;
+		text-decoration: none;
+		margin-left: 2rem;
+		transition: color 0.3s ease;
+	}
+
+	.nav-links a:hover {
+		color: var(--color-accent);
+	}
+
+	.nav-links a.active {
+		color: var(--color-accent);
+		font-weight: bold;
+	}
+</style> 
