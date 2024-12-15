@@ -13,12 +13,21 @@ import Layout from '../layouts/Layout.astro';
 			<a href="mailto:hi@glow.trading" class="email">hi@glow.trading</a>
 		</header>
 
-		<a href="https://leanmaxx.com" class="product-card" target="_blank" rel="noopener">
-			<div class="card-content">
-				<h2>LeanMaxx</h2>
-				<p>Cutting-edge nutrition modeling</p>
-			</div>
-		</a>
+		<div class="products">
+			<a href="https://leanmaxx.com" class="product-card" target="_blank" rel="noopener">
+				<div class="card-content">
+					<h2>LeanMaxx</h2>
+					<p>Cutting-edge nutrition modeling</p>
+				</div>
+			</a>
+
+			<a href="https://bronze.so" class="product-card" target="_blank" rel="noopener">
+				<div class="card-content">
+					<h2>Bronze</h2>
+					<p>Expert beauty consulting</p>
+				</div>
+			</a>
+		</div>
 	</main>
 </Layout>
 
@@ -72,36 +81,41 @@ import Layout from '../layouts/Layout.astro';
 		transform: translateY(-2px);
 	}
 
+	.products {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 2rem;
+		max-width: 800px;
+		margin: 0 auto;
+	}
+
 	.product-card {
-		display: block;
-		max-width: 600px;
-		margin: 2rem auto;
 		background: white;
-		border-radius: 16px;
+		border-radius: 12px;
 		overflow: hidden;
-		box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+		box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
 		transition: transform 0.3s ease, box-shadow 0.3s ease;
 		text-decoration: none;
 	}
 
 	.product-card:hover {
-		transform: translateY(-4px);
-		box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+		transform: translateY(-2px);
+		box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
 	}
 
 	.card-content {
-		padding: 2rem;
+		padding: 1.5rem;
 		text-align: center;
 	}
 
 	.card-content h2 {
-		font-size: 2rem;
+		font-size: 1.75rem;
 		color: var(--color-primary);
-		margin-bottom: 1rem;
+		margin-bottom: 0.5rem;
 	}
 
 	.card-content p {
-		font-size: 1.2rem;
+		font-size: 1.1rem;
 		margin-bottom: 0;
 	}
 
@@ -110,8 +124,9 @@ import Layout from '../layouts/Layout.astro';
 			font-size: 2.5rem;
 		}
 
-		.product-card {
-			margin: 2rem 1rem;
+		.products {
+			grid-template-columns: 1fr;
+			padding: 0 1rem;
 		}
 	}
 </style>
