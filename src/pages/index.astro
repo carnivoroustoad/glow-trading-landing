@@ -5,6 +5,7 @@ import Layout from '../layouts/Layout.astro';
 <Layout title="Glow Trading - Quantitative Beauty Solutions">
 	<main>
 		<header>
+			<div class="gradient-blur"></div>
 			<h1>Quantitative Beauty Intelligence</h1>
 			<p>
 				Revolutionizing men's beauty through data-driven insights and AI-powered recommendations
@@ -16,6 +17,7 @@ import Layout from '../layouts/Layout.astro';
 		<div class="products">
 			<a href="https://leanmaxx.com" class="product-card" target="_blank" rel="noopener">
 				<div class="card-content">
+					<div class="card-glow"></div>
 					<h2>LeanMaxx</h2>
 					<p>Cutting-edge nutrition modeling</p>
 				</div>
@@ -23,6 +25,7 @@ import Layout from '../layouts/Layout.astro';
 
 			<a href="https://bronze.so" class="product-card" target="_blank" rel="noopener">
 				<div class="card-content">
+					<div class="card-glow"></div>
 					<h2>Bronze</h2>
 					<p>Expert beauty consulting</p>
 				</div>
@@ -36,24 +39,39 @@ import Layout from '../layouts/Layout.astro';
 		max-width: 1200px;
 		margin: 0 auto;
 		padding: 0 2rem;
+		position: relative;
 	}
 
 	header {
-		padding: 8rem 0 4rem;
+		padding: 6rem 0 3rem;
 		text-align: center;
 		max-width: 800px;
 		margin: 0 auto;
+		position: relative;
+	}
+
+	.gradient-blur {
+		position: absolute;
+		top: -100px;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 800px;
+		height: 400px;
+		background: radial-gradient(circle, rgba(0, 184, 148, 0.15), rgba(9, 132, 227, 0.1));
+		filter: blur(80px);
+		z-index: -1;
 	}
 
 	h1 {
-		font-size: 4rem;
+		font-size: 4.5rem;
 		margin-bottom: 1.5rem;
-		letter-spacing: -1.5px;
+		letter-spacing: -2px;
 		line-height: 1.1;
 		background: linear-gradient(to right, var(--color-primary), var(--color-accent));
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
 		background-clip: text;
+		font-weight: 700;
 	}
 
 	p {
@@ -71,14 +89,16 @@ import Layout from '../layouts/Layout.astro';
 		text-decoration: none;
 		font-weight: 600;
 		transition: all 0.3s ease;
-		padding: 0.5rem 1rem;
-		border-radius: 8px;
+		padding: 0.75rem 1.5rem;
+		border-radius: 12px;
 		background: rgba(0, 184, 148, 0.1);
+		border: 1px solid rgba(0, 184, 148, 0.2);
 	}
 
 	.email:hover {
-		background: rgba(0, 184, 148, 0.2);
+		background: rgba(0, 184, 148, 0.15);
 		transform: translateY(-2px);
+		border-color: rgba(0, 184, 148, 0.3);
 	}
 
 	.products {
@@ -90,33 +110,60 @@ import Layout from '../layouts/Layout.astro';
 	}
 
 	.product-card {
-		background: white;
-		border-radius: 12px;
+		background: rgba(255, 255, 255, 0.8);
+		border-radius: 16px;
 		overflow: hidden;
-		box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-		transition: transform 0.3s ease, box-shadow 0.3s ease;
+		box-shadow: 
+			0 4px 24px rgba(0, 0, 0, 0.03),
+			0 1px 2px rgba(0, 0, 0, 0.05);
+		transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 		text-decoration: none;
+		position: relative;
+		backdrop-filter: blur(10px);
+		border: 1px solid rgba(255, 255, 255, 0.5);
 	}
 
 	.product-card:hover {
-		transform: translateY(-2px);
-		box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+		transform: translateY(-4px) scale(1.02);
+		box-shadow: 
+			0 8px 32px rgba(0, 0, 0, 0.05),
+			0 1px 2px rgba(0, 0, 0, 0.1);
+		border-color: rgba(0, 184, 148, 0.2);
 	}
 
 	.card-content {
-		padding: 1.5rem;
+		padding: 2rem;
 		text-align: center;
+		position: relative;
+		overflow: hidden;
+	}
+
+	.card-glow {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: radial-gradient(circle at 50% 0%, rgba(0, 184, 148, 0.1), transparent 70%);
+		opacity: 0;
+		transition: opacity 0.4s ease;
+	}
+
+	.product-card:hover .card-glow {
+		opacity: 1;
 	}
 
 	.card-content h2 {
 		font-size: 1.75rem;
 		color: var(--color-primary);
 		margin-bottom: 0.5rem;
+		position: relative;
 	}
 
 	.card-content p {
 		font-size: 1.1rem;
 		margin-bottom: 0;
+		position: relative;
 	}
 
 	@media (max-width: 768px) {
@@ -127,6 +174,10 @@ import Layout from '../layouts/Layout.astro';
 		.products {
 			grid-template-columns: 1fr;
 			padding: 0 1rem;
+		}
+
+		.gradient-blur {
+			width: 100%;
 		}
 	}
 </style>
